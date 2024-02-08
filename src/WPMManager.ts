@@ -46,7 +46,12 @@ class WPMManager {
   }
 
   handleTextInput(text: string) {
-    this.cur.push(text.length)
+    // Do not increase if space character
+    if (text.trim().length === 0) {
+      return
+    }
+    // Increase by 1 only. (handle pasting)
+    this.cur.push(1)
   }
 }
 
