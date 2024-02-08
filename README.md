@@ -5,6 +5,10 @@
 A lovely capybara is running in your status bar.  
 Whip your typing to make the capybara run faster!
 
+## Installation
+
+Install Typeybara from the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=openkmj.typeybara).
+
 ## Features
 
 ![showcase](./img/showcase.gif)  
