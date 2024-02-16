@@ -2,7 +2,7 @@
   "name": "typeybara",
   "displayName": "Typeybara",
   "description": "Capybara running with your typing",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "openkmj",
   "engines": {
     "vscode": "^1.86.0"
