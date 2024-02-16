@@ -1,5 +1,8 @@
 import {StatusBarItem} from 'vscode'
 
+/**
+ * Renderer is for rendering icon and text in the status bar.
+ */
 class Renderer {
   static ICON = [
     '$(capybara-1)',
@@ -18,10 +21,17 @@ class Renderer {
     this.displaySpeed = 0
   }
 
+  /**
+   * Set screen refresh rete. Higher speed, fast running.
+   * @param speed Text refresh rate(speed of capybara). Currently WPM.
+   */
   setDisplaySpeed(speed: number) {
     this.displaySpeed = speed
   }
 
+  /**
+   * Starts rendering in the status bar. Replace text periodically.
+   */
   render() {
     if (this.displaySpeed === 0) {
       this.statusBarItem.text = `$(capybara-0) ${this.displaySpeed} wpm`
@@ -54,6 +64,9 @@ class Renderer {
     }
   }
 
+  /**
+   * Stop rendering and clear.
+   */
   stop() {
     clearTimeout(this.renderTimerRef)
     this.renderTimerRef = undefined
