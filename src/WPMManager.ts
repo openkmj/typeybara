@@ -1,3 +1,7 @@
+/**
+ * WPMManager is for measuring the typing speed(words per minute).
+ * It evaluates the speed by counting the number of characters typed over recent N seconds.
+ */
 class WPMManager {
   /**
    * Duration of one measurement(ms)
@@ -17,6 +21,10 @@ class WPMManager {
     this.total = []
   }
 
+  /**
+   * Start the typing speed measurement process.
+   * @param callback callback function after each measurement.
+   */
   start(callback: (measuredSpeed: number) => void) {
     this.measurementTimerRef = setInterval(() => {
       if (this.total.length >= WPMManager.MEASUREMENT_COUNT) {
@@ -38,6 +46,9 @@ class WPMManager {
     }, WPMManager.MEASUREMENT_DURATION)
   }
 
+  /**
+   * Stop measurement and clear.
+   */
   stop() {
     clearInterval(this.measurementTimerRef)
     this.measurementTimerRef = undefined
@@ -45,6 +56,10 @@ class WPMManager {
     this.total = []
   }
 
+  /**
+   * Handles input text by counting the length of the text and add to current measurement.
+   * @param text input text
+   */
   handleTextInput(text: string) {
     // Do not increase if space character
     if (text.trim().length === 0) {
