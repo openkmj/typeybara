@@ -6,11 +6,11 @@ class WPMManager {
   /**
    * Duration of one measurement(ms)
    */
-  private static MEASUREMENT_DURATION = 500
+  static readonly MEASUREMENT_DURATION = 500
   /**
    * Total number of measurements
    */
-  private static MEASUREMENT_COUNT = 10
+  static MEASUREMENT_COUNT = 10
 
   private cur: number[]
   private total: number[][]

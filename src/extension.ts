@@ -9,13 +9,25 @@ const statusBarItem = vscode.window.createStatusBarItem(
 const renderer = new Renderer(statusBarItem)
 const wpmManager = new WPMManager()
 
+const appplyConfiguration = () => {
+  const con = vscode.workspace.getConfiguration('typeybara')
+  const duration = (con.get('wpm.duration') ?? 5) as number
+  WPMManager.MEASUREMENT_COUNT =
+    (duration * 1000) / WPMManager.MEASUREMENT_DURATION
+}
+
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(statusBarItem)
+  appplyConfiguration()
+
   renderer.render()
   wpmManager.start(s => {
     renderer.setDisplaySpeed(s)
   })
 
+  vscode.workspace.onDidChangeConfiguration(e => {
+    // apply configuration
+  })
   context.subscriptions.push(
     vscode.workspace.onDidChangeTextDocument(e => {
       const text = e.contentChanges[0].text
