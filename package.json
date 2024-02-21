@@ -30,6 +30,39 @@
   "license": "Apache-2.0",
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": [
+      {
+        "title": "Typeybara",
+        "properties": {
+          "typeybara.wpm.duration": {
+            "description": "",
+            "default": 5,
+            "minimum": 1,
+            "maximum": 60,
+            "type": "number"
+          },
+          "typeybara.runner.type": {
+            "description": "",
+            "type": "string",
+            "default": "Capybara",
+            "enum": [
+              "None",
+              "Capybara"
+            ]
+          },
+          "typeybara.runner.speed": {
+            "description": "",
+            "type": "string",
+            "default": "Normal",
+            "enum": [
+              "Fast",
+              "Normal",
+              "Slow"
+            ]
+          }
+        }
+      }
+    ],
     "icons": {
       "capybara-0": {
         "description": "capybara 0",
