@@ -2,7 +2,7 @@
   "name": "typeybara",
   "displayName": "Typeybara",
   "description": "Capybara running with your typing",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "publisher": "openkmj",
   "engines": {
     "vscode": "^1.86.0"
@@ -35,14 +35,14 @@
         "title": "Typeybara",
         "properties": {
           "typeybara.wpm.duration": {
-            "description": "",
+            "description": "Time interval(seconds) for calculating typing speed",
             "default": 5,
             "minimum": 1,
             "maximum": 60,
             "type": "number"
           },
           "typeybara.runner.type": {
-            "description": "",
+            "description": "Type of Runner(Capybara default)",
             "type": "string",
             "default": "Capybara",
             "enum": [
@@ -51,7 +51,7 @@
             ]
           },
           "typeybara.runner.speed": {
-            "description": "",
+            "description": "Running speed of Capybara(or others)",
             "type": "string",
             "default": "Normal",
             "enum": [

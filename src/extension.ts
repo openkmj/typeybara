@@ -10,10 +10,21 @@ const renderer = new Renderer(statusBarItem)
 const wpmManager = new WPMManager()
 
 const appplyConfiguration = () => {
-  const con = vscode.workspace.getConfiguration('typeybara')
-  const duration = (con.get('wpm.duration') ?? 5) as number
+  const config = vscode.workspace.getConfiguration('typeybara')
+  const duration = (config.get('wpm.duration') ?? 5) as number
   WPMManager.MEASUREMENT_COUNT =
     (duration * 1000) / WPMManager.MEASUREMENT_DURATION
+
+  const speed = (config.get('runner.speed') ?? 'Normal') as string
+  if (speed === 'Fast') {
+    Renderer.RUNNER_SPEED = 1.3
+  } else if (speed === 'Normal') {
+    Renderer.RUNNER_SPEED = 1
+  } else if (speed === 'Slow') {
+    Renderer.RUNNER_SPEED = 0.7
+  }
+  const runnerType = (config.get('runner.type') ?? 'Capybara') as string
+  Renderer.RUNNER_TYPE = runnerType === 'None' ? '' : runnerType
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -26,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
   })
 
   vscode.workspace.onDidChangeConfiguration(e => {
-    // apply configuration
+    appplyConfiguration()
   })
   context.subscriptions.push(
     vscode.workspace.onDidChangeTextDocument(e => {
