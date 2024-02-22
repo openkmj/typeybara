@@ -10,3 +10,9 @@ All notable changes to the "typeybara" extension will be documented in this file
 
 - Handle copy/paste.
   - Paste no longer affect WPM.
+
+## [0.2.0]
+
+- Add extension configuration
+  - Control runner's speed and visibility
+  - Control time interval for calculating typing speed
